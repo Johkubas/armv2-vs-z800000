@@ -542,6 +542,154 @@ Z80000 I/O savybės:
     \item ARMv2 požiūris lemia paprastesnį procesoriaus dizainą, o Z80000 — didesnes galimybes ir sudėtingesnius I/O valdymo scenarijus.
 \end{itemize}
 
+\section{Pertraukimai}
+
+\subsection{ARMv2 pertraukimai}
+
+ARMv2 architektūroje pertraukimai naudojami išoriniams įvykiams apdoroti, pavyzdžiui, įvesties/I/O įrenginių signalams ar laikmačio įvykiams. ARMv2 palaiko kelias pagrindines pertraukimų rūšis.
+
+Pagrindiniai ARMv2 pertraukimai:
+\begin{itemize}
+    \item \textbf{IRQ (Interrupt Request)} – paprastas išorinis pertraukimas.
+    \item \textbf{FIQ (Fast Interrupt Request)} – greitas pertraukimas, skirtas svarbiems įvykiams.
+\end{itemize}
+
+ARMv2 pertraukimų savybės:
+\begin{itemize}
+    \item Pertraukimų metu procesorius automatiškai išsaugo būseną.
+    \item FIQ turi didesnį prioritetą nei IRQ.
+    \item Yra atskiri registrai, skirti pertraukimų apdorojimui.
+    \item Galima programiškai įjungti arba išjungti pertraukimus.
+\end{itemize}
+
+
+\subsection{Z80000 pertraukimai}
+
+Z80000 architektūra taip pat palaiko išorinius pertraukimus, kurie naudojami greitam reakcijos laikui į įrenginių siunčiamus signalus.
+
+Z80000 pertraukimų savybės:
+\begin{itemize}
+    \item Palaikomi keli pertraukimų lygiai (prioritetai).
+    \item Pertraukimai gali būti maskuojami (išjungiami).
+    \item Pertraukimai perduoda valdymą į iš anksto nustatytus pertraukimo apdorojimo adresus.
+    \item Galimas vektorizuotų pertraukimų palaikymas.
+\end{itemize}
+
+
+\subsection{Palyginimas}
+
+\begin{itemize}
+    \item ARMv2 turi aiškiai atskirtus \textbf{IRQ} ir \textbf{FIQ}, leidžiančius itin greitai reaguoti į svarbius įvykius.
+    \item Z80000 siūlo \textbf{kelių lygių pertraukimų sistemą}, leidžiančią lanksčiau valdyti prioritetus.
+    \item Abi architektūros leidžia programiškai valdyti pertraukimų įjungimą ir išjungimą.
+\end{itemize}
+
+\section{Duomenų tipai}
+
+\subsection{ARMv2 duomenų tipai}
+
+ARMv2 architektūra aparatinės įrangos lygiu palaiko pagrindinius sveikųjų
+skaičių duomenų tipus. Pagrindinis palaikomas skaitinis formatas yra
+\textbf{dvejeto papildinys (two's complement)}, kuris naudojamas visiems
+pasirašytiems sveikiesiems skaičiams.
+
+ARMv2 palaikomi duomenų tipai:
+\begin{itemize}
+    \item 8 bitų sveikieji skaičiai (baitai),
+    \item 16 bitų sveikieji skaičiai,
+    \item 32 bitų sveikieji skaičiai,
+    \item loginiai duomenys (bitų lygio operacijos).
+\end{itemize}
+
+Slankiojo kablelio aritmetika ARMv2 procesoriuje \textbf{nebuvo realizuota
+aparatūriškai} – ji galėjo būti atliekama tik programiškai arba naudojant
+atskirus išorinius skaičiavimo modulius.
+
+\subsection{Zilog Z80000 duomenų tipai}
+
+Z80000 architektūra taip pat palaiko \textbf{dvejeto papildinio} sveikųjų
+skaičių formatą. Ji leidžia dirbti tiek su mažesniais, tiek su pilnais
+32 bitų duomenimis.
+
+Z80000 palaikomi duomenų tipai:
+\begin{itemize}
+    \item 8 bitų sveikieji skaičiai,
+    \item 16 bitų sveikieji skaičiai,
+    \item 32 bitų sveikieji skaičiai,
+    \item loginiai ir bitų lygio duomenys.
+\end{itemize}
+
+Kaip ir ARMv2 atveju, \textbf{slankiojo kablelio aritmetika nebuvo integruota}
+į patį Z80000 procesorių ir buvo realizuojama per papildomus koprocesorius
+arba programiniu būdu.
+
+\subsection{Palyginimas}
+
+\begin{itemize}
+    \item Abi architektūros naudoja \textbf{dvejeto papildinio} formatą
+    pasirašytiems sveikiesiems skaičiams.
+    \item Tiek ARMv2, tiek Z80000 palaiko 8, 16 ir 32 bitų sveikųjų skaičių
+    duomenis.
+    \item Nei ARMv2, nei Z80000 neturi integruoto slankiojo kablelio
+    skaičiavimo aparato.
+\end{itemize}
+
+Abi architektūros buvo daugiau orientuotos į bendro pobūdžio skaitinius
+skaičiavimus ir valdymo užduotis, o ne į sudėtingą mokslinę slankiojo kablelio
+aritmetiką.
+
+\section{Greitaveika}
+
+\subsection{ARMv2 greitaveika}
+
+ARMv2 procesoriai veikė santykinai nedideliais, bet tuo metu pakankamai
+efektyviais dažniais. Tipiniai ARMv2 procesorių taktinių generatorių dažniai
+buvo apie \textbf{8--12 MHz}.
+
+Dauguma ARMv2 instrukcijų buvo įvykdomos per \textbf{1 ciklą}, todėl reali
+greitaveika dažnai buvo artima taktiniam dažniui. Dėl paprastos RISC
+architektūros ARMv2 pasižymėjo gera energijos vartojimo ir našumo pusiausvyra.
+
+Kur ARMv2 buvo greitesnis:
+\begin{itemize}
+    \item trumpesnis instrukcijų vykdymo laikas,
+    \item mažesnis energijos suvartojimas,
+    \item paprastesnis „pipeline“ mechanizmas.
+\end{itemize}
+
+\subsection{Zilog Z80000 greitaveika}
+
+Z80000 procesoriai buvo projektuojami kaip galingesni 32 bitų CISC procesoriai.
+Jų tipiniai taktinių generatorių dažniai siekė \textbf{10--20 MHz}.
+
+Dėl sudėtingesnių instrukcijų dauguma operacijų buvo vykdomos per
+\textbf{kelis taktinius ciklus}. Tai reiškia, kad nors dažnis galėjo būti
+šiek tiek didesnis nei ARMv2, realus vienos instrukcijos vykdymo laikas
+dažnai buvo ilgesnis.
+
+Z80000 greitaveikos ypatybės:
+\begin{itemize}
+    \item sudėtingesnės instrukcijos,
+    \item daugiau ciklų vienai komandai,
+    \item didesnis lankstumas, bet mažesnis efektyvumas.
+\end{itemize}
+
+\subsection{Palyginimas}
+
+\begin{itemize}
+    \item ARMv2 dažniausiai atlikdavo daugiau instrukcijų per tą patį laiką,
+    nes dauguma jų vykdomos per 1 ciklą.
+    \item Z80000 galėjo turėti šiek tiek didesnį taktinį dažnį, bet dažnai
+    prarasdavo pranašumą dėl kelių ciklų instrukcijų.
+    \item ARMv2 turėjo geresnį energijos ir našumo santykį.
+\end{itemize}
+
+Galima teigti, kad praktikoje ARMv2 dažniau pasirodydavo efektyvesnis,
+ypač įterptinėse sistemose, tuo tarpu Z80000 buvo orientuotas į universalesnes
+skaičiavimo užduotis.
+
+
+
 
 
 \bibliographystyle{plain}
