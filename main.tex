@@ -31,21 +31,21 @@ ARMv2 ir Z80000 architektūros, abi ~1986–1987 laikotarpio.
 
 ARMv2 buvo pristatytas 1987 metais ir
 gaminamas naudojant CMOS technologiją su maždaug 2~µm gamybos procesu.
-Šis procesorius turėjo apie 25 tūkst. tranzistorių, kas tuo metu buvo itin
+Procesorius turėjo apie 25 tūkst. tranzistorių, kas tuo metu buvo itin
 mažas skaičius 32 bitų architektūrai. Dėl mažo tranzistorių kiekio ARM2
 pasižymėjo labai mažu energijos suvartojimu ir nedideliu šilumos išsiskyrimu.
 
-Tipinis taktinis dažnis siekė apie 8~MHz. Procesorius buvo naudojamas
+Taktinis dažnis siekė apie 8~MHz. Procesorius buvo naudojamas
 \emph{Acorn Archimedes} kompiuteriuose. Fizinė procesoriaus realizacija buvo
 monokristalinis mikroprocesorius viename luste. Sistema pasižymėjo nedideliais
-gabaritais, maža mase ir itin geru energijos efektyvumu, lyginant su kitais
+gabaritais, maža mase ir geru energijos efektyvumu, lyginant su kitais
 to meto 32 bitų sprendimais.
 
 \subsection{Zilog Z80000}
 
 Zilog Z80000 buvo pristatytas 1986 metais kaip 32 bitų CISC tipo
 mikroprocesorius. Jis buvo gaminamas naudojant VLSI technologiją ir turėjo apie
-91 tūkst. tranzistorių. Palyginus su ARMv2, Z80000 buvo gerokai sudėtingesnis
+91 tūkst. tranzistorių. Palyginus su ARMv2, Z80000 buvo stipriai sudėtingesnis
 ir didesnis.
 
 Procesorius palaikė iki 4~GiB adresuojamos atminties erdvę, turėjo vidinį
@@ -59,25 +59,25 @@ aušinimo bei maitinimo sistemos.
 
 \subsection{Palyginimas}
 
-ARMv2 pasižymėjo itin kompaktišku dizainu, mažu tranzistorių skaičiumi,
+ARMv2 pasižymėjo kompaktišku dizainu, mažu tranzistorių skaičiumi,
 mažu energijos suvartojimu ir paprasta fizine realizacija, todėl puikiai
 tiko kompaktiškoms sistemoms.
 
 Tuo tarpu Zilog Z80000 buvo didesnio našumo, bet ir gerokai sudėtingesnis
 procesorius su didesniu energijos poreikiu, orientuotas į galingas
-skaičiavimo sistemas. Abu procesoriai naudojo VLSI technologijas, tačiau
-jų projektavimo filosofija buvo iš esmės skirtinga.
+skaičiavimo sistemas. Abu procesoriai naudojo VLSI technologijas, bet
+jų projektavimo filosofija buvo skirtinga.
 
 \section{Architektūrų tipas}
 
 \subsection{ARMv2}
 
-ARMv2 architektūra priklauso \textbf{registrinės rinkinės (load/store) RISC}
+ARMv2 architektūra priklauso \textbf{registrinės (load/store) RISC}
 architektūrų tipui \cite{WikiARM}. Tai reiškia, jog visos aritmetinės ir
 loginės operacijos atliekamos tik su registrais, o atmintis naudojama tik
 duomenų įkėlimui (\emph{load}) ir iškėlimui (\emph{store}).
 
-ARMv2 architektūroje nėra akumuliatoriaus tipo operacijų – vietoje to naudojami
+ARMv2 architektūroje nėra akumuliatoriaus tipo operacijų, o vietoje to naudojami
 bendrosios paskirties registrai. Tokia architektūra supaprastina
 komandų dekodavimą ir leidžia pasiekti didelį energijos efektyvumą.
 
@@ -101,8 +101,8 @@ operacijos atliekamos su registrais, o atmintis pasiekiama tik per
 Z80000 atstovauja \textbf{CISC registrinę architektūrą}, kur leidžiama atlikti
 operacijas tiesiogiai su atmintimi \cite{Z80000}.
 
-Taigi nors abi architektūros naudoja registrus, jų projektavimo filosofija
-esmingai skiriasi: ARMv2 siekia paprastumo, efektyvumo ir greičio, o Z80000 –
+Taigi nors abi architektūros naudoja registrus, jų projektavimas
+gan stipriai skiriasi: ARMv2 siekia paprastumo, efektyvumo ir greičio, o Z80000 –
 universalumo ir funkcionalumo.
 
 
@@ -121,10 +121,10 @@ aiškiai nurodomus operandus: du šaltinius ir vieną rezultatą. Pavyzdžiui:
 Šioje instrukcijoje registras \texttt{r1} ir \texttt{r2} yra šaltiniai, o
 \texttt{r0} yra tikslinis registras. Nei atmintis, nei akumuliatorius čia nėra
 naudojami kaip implicitiniai operandai, todėl ARMv2 galima laikyti
-\textbf{trijų adresų mašina} (bent jau pagrindinėms R–R operacijoms).
+\textbf{trijų adresų mašina}.
 
 Atminties operacijos (\texttt{LDR}, \texttt{STR}) taip pat paprastai turi
-aiškiai nurodytą registrą - tikslą ir adresą, gaunamą iš bazinio registro bei
+aiškiai nurodytą registrą, tikslą ir adresą, gaunamą iš bazinio registro bei
 poslinkio, tačiau konceptualiai tai vis tiek atitinka trijų operandų schemą:
 tikslinis registras, bazinis registras ir poslinkis.
 
@@ -138,12 +138,12 @@ formatą \cite{Z80000, WikiZ80000}. Tipinė instrukcija atrodo taip:
 \end{verbatim}
 
 Čia registras \texttt{R1} yra ir vienas iš šaltinių, ir rezultato saugojimo
-vietą, o \texttt{R2} – antrasis operandas. Tokia schema būdinga
+vietą, o \texttt{R2} yra antrasis operandas. Tokia schema būdinga
 \textbf{dviejų adresų mašinoms}, kur vienas operandas yra kartu ir rezultato
 registras.
 
 Daugelis komandų Z80000 leidžia vienam iš operandų būti atminties vieta
-(pvz. \texttt{ADD R1, (addr)}), tačiau konceptualiai tai vis tiek yra dviejų
+(pvz. \texttt{ADD R1, (addr)}), tačiau tai vis tiek yra dviejų
 adresų forma: vienas operandas (registras) ir vienas operandas (atminties
 adresas).
 
@@ -159,7 +159,7 @@ vienas operandas dažnai yra ir rezultato registras. Dėl to kai kurios
 operacijos gali būti išreikštos trumpesniu kodu, bet kartais reikia papildomų
 komandų tarpiniams rezultatams išsaugoti.
 
-Taigi ARMv2 atitinka modernią trijų adresų RISC filosofiją, tuo tarpu Z80000
+Taigi ARMv2 atitinka modernią trijų adresų RISC filosofiją, o Z80000
 išlaiko tradicinę dviejų adresų CISC architektūros schemą.
 
 \section{Registrai}
@@ -172,9 +172,9 @@ aritmetinėms, tiek adresavimo operacijoms. Kai kurie registrai turi ir
 \textbf{specialią paskirtį}:
 
 \begin{itemize}
-  \item \texttt{R13} – steko registras (Stack Pointer, SP),
-  \item \texttt{R14} – grįžimo adresų registras (Link Register, LR),
-  \item \texttt{R15} – programos skaitiklis (Program Counter, PC).
+  \item \texttt{R13} – (Stack Pointer, SP),
+  \item \texttt{R14} – (Link Register, LR),
+  \item \texttt{R15} – (Program Counter, PC).
 \end{itemize}
 
 Be bendrosios paskirties registrų, ARMv2 taip pat turi \textbf{būsenos registrą}
@@ -270,6 +270,102 @@ loginių operacijų rezultatams įvertinti bei sąlyginiam vykdymui.
 \end{itemize}
 
 ARMv2 šioje vietoje pasižymi didesniu lankstumu ir efektyvesniu valdymu.
+
+\section{Duomenų plotis (mašininis žodis)}
+
+\subsection{ARMv2 duomenų plotis}
+
+ARMv2 architektūra yra \textbf{32 bitų} sistema \cite{WikiARM}. Tai reiškia,
+kad pagrindinis mašininis žodis, su kuriuo atliekamos aritmetinės, loginės ir
+adresavimo operacijos, yra 32 bitų pločio. Visi bendrosios paskirties registrai
+taip pat yra 32 bitų.
+
+ARMv2 palaiko darbą su:
+\begin{itemize}
+  \item 8 bitų duomenimis (baitais),
+  \item 16 bitų duomenimis (pusžodžiais),
+  \item 32 bitų duomenimis (žodžiais).
+\end{itemize}
+
+Tai leidžia efektyviai apdoroti tiek simbolinius duomenis, tiek sveikuosius
+skaičius ir atminties adresus.
+
+\subsection{Zilog Z80000 duomenų plotis}
+
+Z80000 architektūra taip pat yra \textbf{32 bitų} sistema \cite{Z80000}. Nors ji
+palaiko suderinamumą su ankstesnėmis 16 bitų Zilog architektūromis, pagrindinis
+duomenų apdorojimas vykdomas 32 bitų režimu.
+
+Z80000 palaiko:
+\begin{itemize}
+  \item 8 bitų,
+  \item 16 bitų,
+  \item 32 bitų sveikųjų skaičių apdorojimą.
+\end{itemize}
+
+Registrai gali būti naudojami kaip pilni 32 bitų registrai arba suskaidyti į
+mažesnes dalis, priklausomai nuo vykdomos instrukcijos tipo.
+
+\subsection{Palyginimas}
+
+Abi nagrinėjamos architektūros – ARMv2 ir Z80000 – yra \textbf{32 bitų} sistemos.
+Tai reiškia, kad jų:
+\begin{itemize}
+  \item pagrindinis mašininis žodis yra 32 bitų,
+  \item adresavimo galimybės ir aritmetinės operacijos atliekamos su 32 bitų
+  skaičiais.
+\end{itemize}
+
+Skirtumas yra tas, kad ARMv2 nuo pat pradžių buvo projektuota kaip „gryna“
+32 bitų RISC architektūra, o Z80000 išlaikė didesnį suderinamumą su ankstesnių
+kartų 16 bitų sistemomis.
+
+\section{Atminties išdėstymas ir adresų erdvė}
+
+\subsection{ARMv2 atminties organizavimas}
+
+ARMv2 architektūra turi \textbf{ištisinę (flatinę) adresų erdvę} be segmentavimo
+\cite{WikiARM}. Visi atminties adresai yra interpretuojami vienodai,
+nepriklausomai nuo duomenų ar programos vietos.
+
+Efektyvus ARMv2 adresų plotis yra \textbf{32 bitai}, todėl teoriškai
+maksimali adresuojama atmintis siekia:
+\[
+2^{32} = 4\ \text{GB}.
+\]
+
+Tipinė ARMv2 sistema turėjo nuo kelių šimtų kilobaitų iki kelių megabaitų RAM,
+priklausomai nuo konkretaus įrenginio ir paskirties.
+
+\subsection{Zilog Z80000 atminties organizavimas}
+
+Z80000 architektūra taip pat naudoja \textbf{ištisinę 32 bitų adresų erdvę}
+\cite{Z80000, WikiZ80000}. Ji nepalaiko klasikinio segmentavimo, tačiau leidžia
+naudoti atminties valdymo mechanizmus per išorinius valdiklius.
+
+Efektyvus adresų plotis yra 32 bitai, todėl maksimalus teorinis adresuojamos
+atminties dydis taip pat yra:
+\[
+2^{32} = 4\ \text{GB}.
+\]
+
+Z80000 sistemos dažniausiai buvo komplektuojamos su nuo 1 iki 16 MB
+operatyviosios atminties.
+
+\subsection{Palyginimas}
+
+Abi architektūros – ARMv2 ir Z80000 – turi \textbf{vieningą 32 bitų adresų erdvę}
+be segmentavimo. Jų maksimalus teorinis adresuojamos atminties dydis yra vienodas
+– 4 GB.
+
+Skirtumai pasireiškia praktiniame įgyvendinime:
+\begin{itemize}
+  \item ARMv2 dažniau buvo naudojama įterptinėse sistemose su mažesniais atminties
+  kiekiais.
+  \item Z80000 buvo orientuota į galingesnes darbo stotis ar serverinius sprendimus,
+  todėl tipinis RAM kiekis buvo didesnis.
+\end{itemize}
+
 
 
 \bibliographystyle{plain}
