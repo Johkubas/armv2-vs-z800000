@@ -688,6 +688,81 @@ Galima teigti, kad praktikoje ARMv2 dažniau pasirodydavo efektyvesnis,
 ypač įterptinėse sistemose, tuo tarpu Z80000 buvo orientuotas į universalesnes
 skaičiavimo užduotis.
 
+\section{Spartinančioji atmintis (Cache)}
+
+\subsection{ARMv2 spartinančioji atmintis}
+
+Ankstyvieji ARMv2 procesoriai \textbf{neturėjo integruotos spartinančiosios
+atminties (cache)} pačiame procesoriaus branduolyje. Visos instrukcijos ir
+duomenys buvo imami tiesiogiai iš pagrindinės operatyviosios atminties (RAM).
+
+Kai kuriose sistemose spartinančioji atmintis galėjo būti realizuota
+\textbf{išoriniais mikroschemų sprendimais}, tačiau tai nebuvo standartinė
+ARMv2 architektūros dalis.
+
+ARMv2 atveju:
+\begin{itemize}
+    \item integruotos cache atminties nebuvo,
+    \item viskas priklausė nuo išorinės sistemos realizacijos,
+    \item architektūra buvo orientuota į paprastumą ir mažas energijos sąnaudas.
+\end{itemize}
+
+
+\subsection{Zilog Z80000 spartinančioji atmintis}
+
+Z80000 architektūra taip pat \textbf{neturėjo integruotos spartinančiosios
+atminties} pačiame procesoriuje. Kaip ir ARMv2 atveju, visa pagrindinė atminties
+prieiga vyko tiesiogiai į RAM.
+
+Tačiau kai kurios Z80000 pagrindu kurtos sistemos galėjo turėti
+\textbf{išorinę cache atmintį}, skirtą pagreitinti dažniausiai naudojamų
+duomenų ir instrukcijų prieigą.
+
+\subsection{Palyginimas}
+
+\begin{itemize}
+    \item Nei ARMv2, nei Z80000 neturėjo integruotos spartinančiosios atminties.
+    \item Abiejų architektūrų našumas stipriai priklausė nuo pagrindinės
+    operatyviosios atminties greičio.
+    \item Išorinė spartinančioji atmintis galėjo būti naudojama tik kaip
+    papildomas sistemos sprendimas.
+\end{itemize}
+
+\section{Tipinės taikymo sritys}
+
+\subsection{ARMv2 taikymo sritys}
+
+ARMv2 architektūra dažniausiai buvo naudojama \textbf{įterptinėse sistemose},
+kur svarbus mažas energijos suvartojimas, paprastas valdymas ir patikimumas.
+Šie procesoriai buvo montuojami į valdymo įrenginius, pramoninius kontrolerius,
+medicinos prietaisus ir įvairią buitinę elektroniką.
+
+Vienas konkretus ARMv2 panaudojimo pavyzdys – \textbf{Acorn Archimedes}
+kompiuteriai. Tai buvo asmeniniai kompiuteriai, kurie dėl ARM procesoriaus
+pasižymėjo greitu veikimu ir mažu triukšmu, nes nereikėjo aktyvaus aušinimo.
+Jie buvo naudojami mokyklose, programavimui ir grafiniams darbams.
+
+\subsection{Zilog Z80000 taikymo sritys}
+
+Z80000 buvo orientuotas į \textbf{galingesnes skaičiavimo sistemas}, tokias kaip
+darbo stotys, valdymo sistemos, telekomunikacijų įranga ir prototipiniai
+serveriniai sprendimai.
+
+Konkretus panaudojimo pavyzdys – \textbf{Unix tipo sistemos ir
+tinklo valdymo įrenginiai}, kuriuose reikėjo didesnės skaičiavimo galios,
+virtualiosios atminties palaikymo ir sudėtingesnio įrenginių valdymo.
+Z80000 buvo tinkamas tokioms sistemoms dėl savo lanksčios CISC architektūros.
+
+\subsection{Palyginimas}
+
+\begin{itemize}
+    \item ARMv2 buvo labiau orientuotas į \textbf{efektyvias, mažai
+    energijos naudojančias sistemas}.
+    \item Z80000 buvo skirtas \textbf{galingesnėms ir universalesnėms
+    skaičiavimo sistemoms}.
+    \item ARMv2 dažniau sutinkamas buitinėje ir pramoninėje elektronikoje,
+    o Z80000 – sudėtingesnėse kompiuterinėse sistemose.
+\end{itemize}
 
 
 
