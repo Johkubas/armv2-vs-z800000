@@ -15,7 +15,7 @@
 
 \title{ARMv2 vs. Zilog Z80000:\\
 Kompiuterių architektūrų palyginimas}
-\author{Vardas Pavardė}
+\author{Jokūbas Grigalius}
 \date{\today}
 
 \begin{document}
@@ -29,7 +29,7 @@ ARMv2 ir Z80000 architektūros, abi ~1986–1987 laikotarpio.
 
 \subsection{ARMv2}
 
-ARMv2 (konkrečiai ARM2 procesorius) buvo pristatytas apie 1987 metus ir
+ARMv2 buvo pristatytas 1987 metais ir
 gaminamas naudojant CMOS technologiją su maždaug 2~µm gamybos procesu.
 Šis procesorius turėjo apie 25 tūkst. tranzistorių, kas tuo metu buvo itin
 mažas skaičius 32 bitų architektūrai. Dėl mažo tranzistorių kiekio ARM2
@@ -43,13 +43,13 @@ to meto 32 bitų sprendimais.
 
 \subsection{Zilog Z80000}
 
-Zilog Z80000 buvo pristatytas apie 1986 metus kaip 32 bitų CISC tipo
+Zilog Z80000 buvo pristatytas 1986 metais kaip 32 bitų CISC tipo
 mikroprocesorius. Jis buvo gaminamas naudojant VLSI technologiją ir turėjo apie
 91 tūkst. tranzistorių. Palyginus su ARMv2, Z80000 buvo gerokai sudėtingesnis
-ir didesnis lustas.
+ir didesnis.
 
 Procesorius palaikė iki 4~GiB adresuojamos atminties erdvę, turėjo vidinį
-atminties valdymo bloką (MMU) ir šešių pakopų komandų vykdymo vamzdyną
+atminties valdymo bloką (MMU) ir šešių pakopų komandų vykdymo
 (\emph{pipeline}). Tipiniai taktų dažniai siekė apie 10--20~MHz.
 
 Z80000 sistemos buvo orientuotos į galingesnes darbo stotis ir pramonines
@@ -68,9 +68,42 @@ procesorius su didesniu energijos poreikiu, orientuotas į galingas
 skaičiavimo sistemas. Abu procesoriai naudojo VLSI technologijas, tačiau
 jų projektavimo filosofija buvo iš esmės skirtinga.
 
-\section{Architektūros tipas}
-% Atsakymas į 3 klausimą – ar tai registrinė, RISC/CISC, ir t. t.
+\section{Architektūrų tipas}
 
-% ... vėliau pridėsim daugiau sekcijų pagal 4–20 klausimus.
+\subsection{ARMv2}
 
+ARMv2 architektūra priklauso \textbf{registrinės rinkinės (load/store) RISC}
+architektūrų tipui. Tai reiškia, jog visos aritmetinės ir
+loginės operacijos atliekamos tik su registrais, o atmintis naudojama tik
+duomenų įkėlimui (\emph{load}) ir iškėlimui (\emph{store}).
+
+ARMv2 architektūroje nėra akumuliatoriaus tipo operacijų – vietoje to naudojami
+bendrosios paskirties registrai. Tokia architektūra supaprastina
+komandų dekodavimą ir leidžia pasiekti didelį energijos efektyvumą.
+
+\subsection{Zilog Z80000}
+
+Zilog Z80000 naudoja \textbf{registrinę CISC tipo architektūrą}. Skirtingai nuo ARMv2, ši architektūra palaiko
+sudėtingas komandas, kurios gali tiesiogiai dirbti su atminties operandu be
+tarpinio įkėlimo į registrą.
+
+Z80000 taip pat naudoja bendrosios paskirties registrus, tačiau instrukcijos
+yra sudėtingesnės, turi daugiau adresavimo režimų bei gali atlikti daugiau
+operacijų per vieną komandą.
+
+\subsection{Palyginimas}
+
+ARMv2 atstovauja grynai \textbf{RISC registrinę architektūrą}, kur visos
+operacijos atliekamos su registrais, o atmintis pasiekiama tik per
+\emph{load/store} instrukcijas.
+
+Z80000 atstovauja \textbf{CISC registrinę architektūrą}, kur leidžiama atlikti
+operacijas tiesiogiai su atmintimi.
+
+Taigi nors abi architektūros naudoja registrus, jų projektavimo filosofija
+esmingai skiriasi: ARMv2 siekia paprastumo, efektyvumo ir greičio, o Z80000 –
+universalumo ir funkcionalumo.
+
+\bibliographystyle{plain}
+\bibliography{references}
 \end{document}
