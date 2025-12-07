@@ -73,7 +73,7 @@ jų projektavimo filosofija buvo iš esmės skirtinga.
 \subsection{ARMv2}
 
 ARMv2 architektūra priklauso \textbf{registrinės rinkinės (load/store) RISC}
-architektūrų tipui. Tai reiškia, jog visos aritmetinės ir
+architektūrų tipui \cite{WikiARM}. Tai reiškia, jog visos aritmetinės ir
 loginės operacijos atliekamos tik su registrais, o atmintis naudojama tik
 duomenų įkėlimui (\emph{load}) ir iškėlimui (\emph{store}).
 
@@ -83,7 +83,8 @@ komandų dekodavimą ir leidžia pasiekti didelį energijos efektyvumą.
 
 \subsection{Zilog Z80000}
 
-Zilog Z80000 naudoja \textbf{registrinę CISC tipo architektūrą}. Skirtingai nuo ARMv2, ši architektūra palaiko
+Zilog Z80000 naudoja \textbf{registrinę CISC tipo architektūrą}
+\cite{Z80000, WikiZ80000}. Skirtingai nuo ARMv2, ši architektūra palaiko
 sudėtingas komandas, kurios gali tiesiogiai dirbti su atminties operandu be
 tarpinio įkėlimo į registrą.
 
@@ -98,12 +99,70 @@ operacijos atliekamos su registrais, o atmintis pasiekiama tik per
 \emph{load/store} instrukcijas.
 
 Z80000 atstovauja \textbf{CISC registrinę architektūrą}, kur leidžiama atlikti
-operacijas tiesiogiai su atmintimi.
+operacijas tiesiogiai su atmintimi \cite{Z80000}.
 
 Taigi nors abi architektūros naudoja registrus, jų projektavimo filosofija
 esmingai skiriasi: ARMv2 siekia paprastumo, efektyvumo ir greičio, o Z80000 –
 universalumo ir funkcionalumo.
 
+
+\section{Adresų skaičius instrukcijose}
+
+\subsection{ARMv2}
+
+ARMv2 instrukcijų rinkinys yra tipiška trijų adresų \emph{load/store} RISC
+architektūra \cite{WikiARM}. Dauguma aritmetinių ir loginių komandų turi tris
+aiškiai nurodomus operandus: du šaltinius ir vieną rezultatą. Pavyzdžiui:
+
+\begin{verbatim}
+    ADD   r0, r1, r2   ; r0 = r1 + r2
+\end{verbatim}
+
+Šioje instrukcijoje registras \texttt{r1} ir \texttt{r2} yra šaltiniai, o
+\texttt{r0} – tikslinis registras. Nei atmintis, nei akumuliatorius čia nėra
+naudojami kaip implicitiniai operandai, todėl ARMv2 galima laikyti
+\textbf{trijų adresų mašina} (bent jau pagrindinėms R–R operacijoms).
+
+Atminties operacijos (\texttt{LDR}, \texttt{STR}) taip pat paprastai turi
+aiškiai nurodytą registrą–tikslą ir adresą, gaunamą iš bazinio registro bei
+poslinkio, tačiau konceptualiai tai vis tiek atitinka trijų operandų schemą:
+tikslinis registras, bazinis registras ir poslinkis.
+
+\subsection{Zilog Z80000}
+
+Zilog Z80000 daugumai aritmetinių ir loginių komandų naudoja dviejų adresų
+formatą \cite{Z80000, WikiZ80000}. Tipinė instrukcija atrodo taip:
+
+\begin{verbatim}
+    ADD   R1, R2   ; R1 = R1 + R2
+\end{verbatim}
+
+Čia registras \texttt{R1} yra ir vienas iš šaltinių, ir rezultato saugojimo
+vietą, o \texttt{R2} – antrasis operandas. Tokia schema būdinga
+\textbf{dviejų adresų mašinoms}, kur vienas operandas yra kartu ir rezultato
+registras.
+
+Daugelis komandų Z80000 leidžia vienam iš operandų būti atminties vieta
+(pvz. \texttt{ADD R1, (addr)}), tačiau konceptualiai tai vis tiek yra dviejų
+adresų forma: vienas operandas (registras) ir vienas operandas (atminties
+adresas).
+
+\subsection{Palyginimas}
+
+ARMv2 architektūra orientuota į \textbf{trijų adresų} registrines instrukcijas,
+kur aiškiai išskiriami du šaltiniai ir rezultato registras. Tai leidžia
+paprasčiau optimizuoti kodą, nes nereikia papildomų komandų rezultatui
+išsaugoti ar vienam iš šaltinių atstatyti.
+
+Z80000 architektūra daugiausia naudoja \textbf{dviejų adresų} formatus, kuriuose
+vienas operandas dažnai yra ir rezultato registras. Dėl to kai kurios
+operacijos gali būti išreikštos trumpesniu kodu, bet kartais reikia papildomų
+komandų tarpiniams rezultatams išsaugoti.
+
+Taigi ARMv2 atitinka modernią trijų adresų RISC filosofiją, tuo tarpu Z80000
+išlaiko tradicinę dviejų adresų CISC architektūros schemą.
+
+
 \bibliographystyle{plain}
-\bibliography{references}
+\bibliography{bib/refs}
 \end{document}
