@@ -464,6 +464,84 @@ Paprasčiau sakant:
   \item Z80000 – lankstumas ir daugiau galimybių vienoje instrukcijoje.
 \end{itemize}
 
+\section{Adresavimo būdai}
+
+\subsection{ARMv2 adresavimo būdai}
+
+ARMv2 palaiko ribotą, bet efektyvią adresavimo sistemą, būdingą RISC architektūroms. Pagrindiniai adresavimo režimai:
+
+\begin{itemize}
+    \item Tiesioginis adresavimas su poslinkiu iš registro.
+    \item Registrų netiesioginis adresavimas.
+    \item Pre-index ir post-index adresavimas su automatiniu registro atnaujinimu.
+    \item PC-reliatyvus adresavimas.
+    \item Tiesioginis (immediate) adresavimas.
+\end{itemize}
+
+ARMv2 architektūroje dauguma operacijų atliekamos naudojant registrus, o atmintis pasiekiama tik per \textit{load} ir \textit{store} instrukcijas.
+
+\subsection{Z80000 adresavimo būdai}
+
+Z80000 palaiko daug platesnį adresavimo režimų rinkinį, būdingą CISC tipo architektūroms:
+
+\begin{itemize}
+    \item Tiesioginis adresavimas.
+    \item Registrų netiesioginis adresavimas.
+    \item Registrų netiesioginis su poslinkiu.
+    \item Indeksuotas adresavimas.
+    \item Kombinuotas bazės, indekso ir poslinkio adresavimas.
+    \item Segmentuotas adresavimas.
+    \item PC-reliatyvus adresavimas.
+    \item Tiesioginis (immediate) adresavimas.
+\end{itemize}
+
+Z80000 architektūra leidžia atlikti sudėtingas atminties operacijas vienoje instrukcijoje.
+
+\subsection{Palyginimas}
+
+ARMv2 naudoja paprastesnius ir greitesnius adresavimo režimus, orientuotus į registrų naudojimą. Z80000 palaiko daugiau skirtingų adresavimo būdų, suteikiančių didesnį lankstumą, bet didesnį sudėtingumą. Z80000 palaiko segmentuotą atmintį, kurios ARMv2 neturi.
+
+\section{I/O galimybės}
+
+\subsection{ARMv2 I/O galimybės}
+
+ARMv2 architektūra nenaudoja specialaus I/O adresų intervalo. Vietoje to, I/O įrenginiai pasiekiami per \textbf{memory-mapped I/O}, t.~y. įrenginiai yra atvaizduojami į tą pačią adresų erdvę kaip ir RAM. Tai supaprastina procesoriaus dizainą ir leidžia naudoti tas pačias \texttt{LDR}/\texttt{STR} instrukcijas duomenims perduoti.
+
+ARMv2 I/O savybės:
+\begin{itemize}
+    \item Memory-mapped I/O yra vienintelis palaikomas mechanizmas.
+    \item I/O įrenginių registrai pasiekiami naudojant standartines atminties instrukcijas.
+    \item Paprastesnis valdymas, bet reikalaujama kruopščios įrenginių adresų planavimo schemos.
+\end{itemize}
+
+
+\subsection{Z80000 I/O galimybės}
+
+Z80000 architektūra, kaip ir dauguma Zilog šeimos procesorių, palaiko du atskirus metodus:
+
+\begin{itemize}
+    \item \textbf{Memory-mapped I/O}
+    \item \textbf{Atskirtą I/O adresų erdvę} (port-based I/O)
+\end{itemize}
+
+Z80000 turi specialias instrukcijas (pvz., \texttt{IN}, \texttt{OUT}), kurios leidžia tiesiogiai skaityti arba rašyti duomenis į I/O prievadus. Taip pat Z80000 gali naudoti atminties adresus I/O įrenginiams tuo pačiu būdu kaip ARMv2.
+
+Z80000 I/O savybės:
+\begin{itemize}
+    \item Tiek port-based, tiek memory-mapped I/O palaikymas.
+    \item Galima atskirti I/O adresus nuo RAM, taip padidinant saugumą ir aiškumą.
+    \item Specialios I/O instrukcijos leidžia greitesnį įrenginių aptarnavimą.
+\end{itemize}
+
+
+\subsection{Palyginimas}
+
+\begin{itemize}
+    \item ARMv2 turi paprastesnę, vieningą I/O sistemą — \textbf{tik memory-mapped I/O}.
+    \item Z80000 suteikia daugiau lankstumo, palaikydamas \textbf{dvi I/O sistemas}, įskaitant specializuotas I/O instrukcijas.
+    \item ARMv2 požiūris lemia paprastesnį procesoriaus dizainą, o Z80000 — didesnes galimybes ir sudėtingesnius I/O valdymo scenarijus.
+\end{itemize}
+
 
 
 \bibliographystyle{plain}
