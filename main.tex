@@ -119,12 +119,12 @@ aiškiai nurodomus operandus: du šaltinius ir vieną rezultatą. Pavyzdžiui:
 \end{verbatim}
 
 Šioje instrukcijoje registras \texttt{r1} ir \texttt{r2} yra šaltiniai, o
-\texttt{r0} – tikslinis registras. Nei atmintis, nei akumuliatorius čia nėra
+\texttt{r0} yra tikslinis registras. Nei atmintis, nei akumuliatorius čia nėra
 naudojami kaip implicitiniai operandai, todėl ARMv2 galima laikyti
 \textbf{trijų adresų mašina} (bent jau pagrindinėms R–R operacijoms).
 
 Atminties operacijos (\texttt{LDR}, \texttt{STR}) taip pat paprastai turi
-aiškiai nurodytą registrą–tikslą ir adresą, gaunamą iš bazinio registro bei
+aiškiai nurodytą registrą - tikslą ir adresą, gaunamą iš bazinio registro bei
 poslinkio, tačiau konceptualiai tai vis tiek atitinka trijų operandų schemą:
 tikslinis registras, bazinis registras ir poslinkis.
 
@@ -161,6 +161,115 @@ komandų tarpiniams rezultatams išsaugoti.
 
 Taigi ARMv2 atitinka modernią trijų adresų RISC filosofiją, tuo tarpu Z80000
 išlaiko tradicinę dviejų adresų CISC architektūros schemą.
+
+\section{Registrai}
+
+\subsection{ARMv2 registrai}
+
+ARMv2 procesorius turi \textbf{16 bendrosios paskirties 32 bitų registrų}
+(\texttt{R0–R15}) \cite{WikiARM}. Dauguma jų gali būti naudojami tiek
+aritmetinėms, tiek adresavimo operacijoms. Kai kurie registrai turi ir
+\textbf{specialią paskirtį}:
+
+\begin{itemize}
+  \item \texttt{R13} – steko registras (Stack Pointer, SP),
+  \item \texttt{R14} – grįžimo adresų registras (Link Register, LR),
+  \item \texttt{R15} – programos skaitiklis (Program Counter, PC).
+\end{itemize}
+
+Be bendrosios paskirties registrų, ARMv2 taip pat turi \textbf{būsenos registrą}
+(\texttt{CPSR}), kuriame saugomi požymių bitai (N, Z, C, V) ir procesoriaus
+režimo informacija.
+
+Visų pagrindinių registrų duomenų plotis yra \textbf{32 bitai}, todėl ARMv2 yra
+32 bitų architektūra tiek instrukcijų vykdymo, tiek registrų lygyje.
+
+\subsection{Zilog Z80000 registrai}
+
+Z80000 architektūra turi \textbf{16 bendrosios paskirties 32 bitų registrų}
+(\texttt{R0–R15}) \cite{Z80000, WikiZ80000}. Šie registrai gali būti naudojami
+aritmetinėms operacijoms, adresų skaičiavimui ir duomenų pernešimui.
+
+Be bendrosios paskirties registrų, architektūra taip pat turi kelis
+\textbf{specializuotus registrus}:
+
+\begin{itemize}
+  \item Programos skaitiklį (PC),
+  \item Būsenos registrą (PSW),
+  \item Pertraukimų ir režimų valdymo registrus.
+\end{itemize}
+
+Z80000 palaiko darbą tiek su 16 bitų, tiek su \textbf{32 bitų registrų poromis},
+todėl daugelis operacijų gali būti vykdomos su pilna 32 bitų skaitmenų
+rezoliucija.
+
+\subsection{Palyginimas}
+
+Abi architektūros – ARMv2 ir Z80000 – naudoja registrinį duomenų apdorojimo
+modelį ir turi po \textbf{16 bendrosios paskirties 32 bitų registrų}. Tačiau
+jų projektavimas skiriasi.
+
+ARMv2 registrai yra orientuoti į greitą \emph{pipeline} vykdymą ir
+efektyvų kompiliatorių darbą. Specialūs registrai (PC, LR, SP) yra integruoti į
+tą pačią registrų grupę.
+
+Z80000 leidžia lankščiai naudoti registrus tiek kaip 16 bitų, tiek kaip 32 bitų
+poras, kas būdinga CISC architektūroms. Jo valdymo registrai yra labiau
+atskirti nuo bendrosios paskirties registrų nei ARM architektūroje.
+
+\section{Požymių bitai (Flags)}
+
+\subsection{ARMv2 požymių bitai}
+
+ARMv2 architektūroje požymių bitai yra saugomi būsenos registre
+\texttt{CPSR} (Current Program Status Register) \cite{WikiARM}. Šie bitai
+naudojami aritmetinių ir loginių operacijų rezultatams apibūdinti bei
+šakotų komandų vykdymui valdyti.
+
+Pagrindiniai naudojami požymių bitai yra šie:
+
+\begin{itemize}
+  \item \textbf{N (Negative)} – nustatomas, jei rezultatas yra neigiamas,
+  \item \textbf{Z (Zero)} – nustatomas, jei rezultatas lygus nuliui,
+  \item \textbf{C (Carry)} – nustatomas, jei operacijos metu įvyko pernešimas,
+  \item \textbf{V (Overflow)} – nustatomas, jei įvyko aritmetinis perpildymas.
+\end{itemize}
+
+Šie požymiai yra naudojami sąlyginių instrukcijų vykdymui,
+nes ARM architektūroje beveik visos instrukcijos gali būti vykdomos
+sąlygiškai, priklausomai nuo šių flag’ų reikšmių.
+
+\subsection{Zilog Z80000 požymių bitai}
+
+Z80000 architektūroje požymių bitai yra saugomi
+\textbf{Program Status Word (PSW)} registre \cite{Z80000}. Šis registras
+apjungia tiek būsenos informaciją, tiek pertraukimų ir režimų valdymą.
+
+Pagrindiniai Z80000 požymių bitai yra:
+
+\begin{itemize}
+  \item \textbf{Z (Zero)} – rezultatas lygus nuliui,
+  \item \textbf{S (Sign)} – rezultato ženklas,
+  \item \textbf{C (Carry)} – pernešimas,
+  \item \textbf{V (Overflow)} – aritmetinis perpildymas.
+\end{itemize}
+
+Šie požymiai yra naudojami sąlyginiams šuoliams, ciklų valdymui ir loginėms
+sprendimų konstrukcijoms.
+
+\subsection{Palyginimas}
+
+Abi architektūros – ARMv2 ir Z80000 – naudoja požymių bitus aritmetinių ir
+loginių operacijų rezultatams įvertinti bei sąlyginiam vykdymui.
+
+\begin{itemize}
+  \item ARMv2 naudoja \texttt{CPSR} registrą ir leidžia beveik kiekvieną
+  instrukciją vykdyti sąlygiškai.
+  \item Z80000 naudoja \texttt{PSW} registrą, kuriame požymiai yra labiau
+  tradiciškai atskirti nuo instrukcijų vykdymo logikos.
+\end{itemize}
+
+ARMv2 šioje vietoje pasižymi didesniu lankstumu ir efektyvesniu valdymu.
 
 
 \bibliographystyle{plain}
