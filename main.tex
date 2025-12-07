@@ -8,6 +8,7 @@
 \geometry{margin=2.5cm}
 \usepackage{hyperref}
 \usepackage{setspace}
+\usepackage{amsmath}
 \onehalfspacing
 
 % literatūrai vėliau galėsim naudoti biblatex arba natbib;
@@ -364,6 +365,103 @@ Skirtumai pasireiškia praktiniame įgyvendinime:
   kiekiais.
   \item Z80000 buvo orientuota į galingesnes darbo stotis ar serverinius sprendimus,
   todėl tipinis RAM kiekis buvo didesnis.
+\end{itemize}
+
+\section{Virtualioji atmintis}
+
+\subsection{ARMv2}
+
+Pats ARMv2 procesorius \textbf{neturėjo integruotos virtualiosios atminties}
+palaikymo. Tai reiškia, kad jis pats savaime negalėjo dirbti su puslapiais ar
+virtualiais adresais.
+
+Tačiau praktikoje virtualioji atmintis galėjo būti realizuojama
+\textbf{naudojant išorinius atminties valdymo modulius (MMU)}. Tokiu atveju
+operacinė sistema galėdavo naudoti puslapiavimą ir dirbti su virtualiais
+adresais, bet tai priklausė nuo konkrečios sistemos realizacijos, o ne nuo
+paties ARMv2 branduolio.
+
+Dėl šios priežasties daugelis ARMv2 sistemų buvo paprastesnės ir dažnai dirbo be
+virtualiosios atminties.
+
+\subsection{Zilog Z80000}
+
+Z80000 architektūra \textbf{turėjo galimybę dirbti su virtualiąja atmintimi}
+per atminties valdymo mechanizmus. Ji palaikė puslapiavimu paremtą atminties
+valdymą, todėl galėjo būti naudojama sudėtingesnėse sistemose su
+operacinėmis sistemomis.
+
+Tai leido:
+\begin{itemize}
+  \item apsaugoti atminties sritis,
+  \item naudoti didesnes programas nei fizinė RAM,
+  \item saugiau atskirti skirtingus procesus.
+\end{itemize}
+
+\subsection{Palyginimas}
+
+Pagrindinis skirtumas tarp šių dviejų architektūrų yra tas, kad:
+
+\begin{itemize}
+  \item ARMv2 virtualiosios atminties tiesiogiai nepalaikė, ją buvo galima
+  įgyvendinti tik per išorinius valdiklius.
+  \item Z80000 jau turėjo realų virtualiosios atminties palaikymą ir galėjo būti
+  naudojama sudėtingesnėse sistemose su pilnavertėmis operacinėmis sistemomis.
+\end{itemize}
+
+Todėl Z80000 šioje vietoje buvo pranašesnė, jei reikėjo dirbti su didelėmis
+programomis ar keliomis užduotimis vienu metu.
+
+\section{Komandų sistema (ISA)}
+
+\subsection{ARMv2}
+
+ARMv2 instrukcijų sistema yra paprasta, būdinga RISC tipo
+architektūroms \cite{WikiARM, ARMv2ISA}. Dauguma instrukcijų yra vienodo ilgio
+ir atlieka vieną paprastą operaciją.
+
+Pagrindinės instrukcijų grupės:
+\begin{itemize}
+  \item duomenų perkėlimo (\texttt{LDR}, \texttt{STR}),
+  \item aritmetinės (\texttt{ADD}, \texttt{SUB}),
+  \item loginės (\texttt{AND}, \texttt{ORR}),
+  \item šuolių ir programos valdymo (\texttt{B}, \texttt{BL}).
+\end{itemize}
+
+Didelis ARM privalumas – beveik kiekviena instrukcija gali būti vykdoma
+sąlygiškai (pagal flag’us).
+
+\subsection{Zilog Z80000}
+
+Z80000 instrukcijų sistema yra sudėtingesnė ir būdinga CISC tipo
+architektūroms \cite{WikiZ80000}. Instrukcijos gali būti įvairaus
+ilgio ir atlikti kelis veiksmus vienu metu.
+
+Pagrindinės instrukcijų grupės:
+\begin{itemize}
+  \item duomenų perkėlimo,
+  \item aritmetinės,
+  \item loginės,
+  \item šuolių,
+  \item bitų operacijų,
+  \item darbo su atmintimi.
+\end{itemize}
+
+Instrukcijos leidžia tiesiogiai dirbti su atmintimi be atskiro įkėlimo
+į registrą.
+
+\subsection{Palyginimas}
+
+ARMv2 instrukcijos yra trumpesnės, vienodo formato ir paprastos, todėl
+procesorius jas vykdo greitai ir efektyviai.
+
+Z80000 instrukcijos yra ilgesnės ir sudėtingesnės, tačiau leidžia vienoje
+komandoje atlikti daugiau veiksmų.
+
+Paprasčiau sakant:
+\begin{itemize}
+  \item ARMv2 – paprastumas ir greitis,
+  \item Z80000 – lankstumas ir daugiau galimybių vienoje instrukcijoje.
 \end{itemize}
 
 
