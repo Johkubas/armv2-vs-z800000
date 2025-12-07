@@ -23,18 +23,50 @@ Kompiuterių architektūrų palyginimas}
 \maketitle
 
 \section{Įvadas}
-Trumpai pristatyk, kodėl pasirinktos ARMv2 ir Z80000 architektūros
-(ir kad jos abi iš ~1986–1987 laikotarpio).
+ARMv2 ir Z80000 architektūros, abi ~1986–1987 laikotarpio. 
 
 \section{Elementinė bazė ir fizinės savybės}
-% Čia bus atsakymas į 2 klausimą.
+
 \subsection{ARMv2}
-% Aprašysim: CMOS, 2 µm procesas, 8 MHz, labai mažas
-% tranzistorių skaičius, maža galia, naudota Acorn Archimedes ir t.t.
+
+ARMv2 (konkrečiai ARM2 procesorius) buvo pristatytas apie 1987 metus ir
+gaminamas naudojant CMOS technologiją su maždaug 2~µm gamybos procesu.
+Šis procesorius turėjo apie 25 tūkst. tranzistorių, kas tuo metu buvo itin
+mažas skaičius 32 bitų architektūrai. Dėl mažo tranzistorių kiekio ARM2
+pasižymėjo labai mažu energijos suvartojimu ir nedideliu šilumos išsiskyrimu.
+
+Tipinis taktinis dažnis siekė apie 8~MHz. Procesorius buvo naudojamas
+\emph{Acorn Archimedes} kompiuteriuose. Fizinė procesoriaus realizacija buvo
+monokristalinis mikroprocesorius viename luste. Sistema pasižymėjo nedideliais
+gabaritais, maža mase ir itin geru energijos efektyvumu, lyginant su kitais
+to meto 32 bitų sprendimais.
 
 \subsection{Zilog Z80000}
-% Aprašysim: 32 bitų procesorius, ~1986 m., ~91 000 tranzistorių, 
-% palaikoma iki 4 GiB adresavimo, didesnė kompleksiškumas ir pan.
+
+Zilog Z80000 buvo pristatytas apie 1986 metus kaip 32 bitų CISC tipo
+mikroprocesorius. Jis buvo gaminamas naudojant VLSI technologiją ir turėjo apie
+91 tūkst. tranzistorių. Palyginus su ARMv2, Z80000 buvo gerokai sudėtingesnis
+ir didesnis lustas.
+
+Procesorius palaikė iki 4~GiB adresuojamos atminties erdvę, turėjo vidinį
+atminties valdymo bloką (MMU) ir šešių pakopų komandų vykdymo vamzdyną
+(\emph{pipeline}). Tipiniai taktų dažniai siekė apie 10--20~MHz.
+
+Z80000 sistemos buvo orientuotos į galingesnes darbo stotis ir pramonines
+sistemas. Dėl didesnio tranzistorių skaičiaus šis procesorius naudojo daugiau
+energijos, turėjo didesnį šilumos išskyrimą ir reikalavo sudėtingesnės
+aušinimo bei maitinimo sistemos.
+
+\subsection{Palyginimas}
+
+ARMv2 pasižymėjo itin kompaktišku dizainu, mažu tranzistorių skaičiumi,
+mažu energijos suvartojimu ir paprasta fizine realizacija, todėl puikiai
+tiko kompaktiškoms sistemoms.
+
+Tuo tarpu Zilog Z80000 buvo didesnio našumo, bet ir gerokai sudėtingesnis
+procesorius su didesniu energijos poreikiu, orientuotas į galingas
+skaičiavimo sistemas. Abu procesoriai naudojo VLSI technologijas, tačiau
+jų projektavimo filosofija buvo iš esmės skirtinga.
 
 \section{Architektūros tipas}
 % Atsakymas į 3 klausimą – ar tai registrinė, RISC/CISC, ir t. t.
