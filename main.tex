@@ -1,26 +1,44 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[lithuanian]{babel}
+\usepackage[lithuanian,english]{babel}
+\usepackage{csquotes}
 \usepackage{geometry}
 \geometry{margin=2.5cm}
 \usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{enumitem}
-\usepackage{natbib}
-\bibliographystyle{agsm}
+\usepackage{setspace}
+\onehalfspacing
 
-\title{ARMv2 vs. Z80000}
-\author{Jokūbas Grigalius}
+% literatūrai vėliau galėsim naudoti biblatex arba natbib;
+% kol kas pakaks paprastų (Author, Year) nuorodų tekste.
+
+\title{ARMv2 vs. Zilog Z80000:\\
+Kompiuterių architektūrų palyginimas}
+\author{Vardas Pavardė}
 \date{\today}
 
 \begin{document}
 
 \maketitle
 
-\input{sections/01}
+\section{Įvadas}
+Trumpai pristatyk, kodėl pasirinktos ARMv2 ir Z80000 architektūros
+(ir kad jos abi iš ~1986–1987 laikotarpio).
 
-\bibliography{bib/references}
+\section{Elementinė bazė ir fizinės savybės}
+% Čia bus atsakymas į 2 klausimą.
+\subsection{ARMv2}
+% Aprašysim: CMOS, 2 µm procesas, 8 MHz, labai mažas
+% tranzistorių skaičius, maža galia, naudota Acorn Archimedes ir t.t.
+
+\subsection{Zilog Z80000}
+% Aprašysim: 32 bitų procesorius, ~1986 m., ~91 000 tranzistorių, 
+% palaikoma iki 4 GiB adresavimo, didesnė kompleksiškumas ir pan.
+
+\section{Architektūros tipas}
+% Atsakymas į 3 klausimą – ar tai registrinė, RISC/CISC, ir t. t.
+
+% ... vėliau pridėsim daugiau sekcijų pagal 4–20 klausimus.
 
 \end{document}
