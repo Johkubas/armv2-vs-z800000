@@ -745,8 +745,7 @@ Jie buvo naudojami mokyklose, programavimui ir grafiniams darbams.
 \subsection{Zilog Z80000 taikymo sritys}
 
 Z80000 buvo orientuotas į \textbf{galingesnes skaičiavimo sistemas}, tokias kaip
-darbo stotys, valdymo sistemos, telekomunikacijų įranga ir prototipiniai
-serveriniai sprendimai.
+darbo stotys, valdymo sistemos, telekomunikacijų įranga.
 
 Konkretus panaudojimo pavyzdys – \textbf{Unix tipo sistemos ir
 tinklo valdymo įrenginiai}, kuriuose reikėjo didesnės skaičiavimo galios,
@@ -768,7 +767,7 @@ Z80000 buvo tinkamas tokioms sistemoms dėl savo lanksčios CISC architektūros.
 
 \subsection{ARMv2 programinė įranga}
 
-ARMv2 architektūrai buvo sukurta nemažai programinės įrangos, ypač skirtos
+ARMv2 architektūrai buvo sukurta nemažai programinės įrangos, skirtos
 įterptinėms sistemoms ir asmeniniams kompiuteriams. Plačiausiai žinoma sistema,
 naudojusi ARMv2, buvo \textbf{Acorn Archimedes}, kuriai buvo kuriamos operacinės
 sistemos ir taikomosios programos.
@@ -777,7 +776,7 @@ ARMv2 kūrimo įrankiai:
 \begin{itemize}
     \item Asamblėriai (ARM assembler),
     \item C kalbos kompiliatoriai,
-    \item Derintojai (debuggeriai),
+    \item Debuggeriai,
     \item Paprasti profiliavimo įrankiai.
 \end{itemize}
 
@@ -811,6 +810,49 @@ Kadangi Z80000 nebuvo plačiai paplitęs masinėje rinkoje, jo programinės
     \item Abiem architektūroms buvo prieinami asamblėriai, C kompiliatoriai
     ir derinimo įrankiai.
 \end{itemize}
+
+\section{Emuliatoriai}
+
+\subsection{ARMv2 emuliatoriai}
+
+ARMv2 architektūrai egzistuoja keli emuliavimo sprendimai, kurie leidžia
+paleisti senas programas arba testuoti sistemas be fizinės aparatinės
+įrangos. Dažniausiai ARMv2 palaikymas yra įtrauktas į bendrus ARM
+emuliatorius.
+
+Populiariausi sprendimai:
+\begin{itemize}
+    \item \textbf{QEMU} - palaiko ankstyvas ARM architektūras ir leidžia
+    emuliuoti ARM pagrindu veikiančias sistemas.
+    \item Specializuoti Acorn Archimedes emuliatoriai, skirti ARM2/ARMv2.
+\end{itemize}
+
+Šie emuliatoriai leidžia paleisti seną programinę įrangą, testuoti kodą ir
+mokytis ARM architektūros veikimo principų.
+
+\subsection{Zilog Z80000 emuliatoriai}
+
+Z80000 architektūrai emuliatorių yra žymiai mažiau, nes pats procesorius
+nebuvo plačiai paplitęs. Dauguma sprendimų yra:
+\begin{itemize}
+    \item akademiniai projektai,
+    \item eksperimentiniai emuliatoriai,
+\end{itemize}
+
+Pilnai funkcionalių, plačiai naudojamų Z80000 emuliatorių šiuo metu yra
+nedaug, todėl ši architektūra dažniausiai tiriama remiantis dokumentacija,
+o ne realiu emuliavimu.
+
+\subsection{Palyginimas}
+
+\begin{itemize}
+    \item ARMv2 turi žymiai daugiau prieinamų emuliatorių ir testavimo
+    įrankių.
+    \item Z80000 emuliavimas yra ribotas ir daugiausia eksperimentinis.
+    \item ARMv2 architektūrą lengviau studijuoti praktiniu būdu naudojant
+    emuliatorius.
+\end{itemize}
+
 
 
 
