@@ -11,9 +11,6 @@
 \usepackage{amsmath}
 \onehalfspacing
 
-% literatūrai vėliau galėsim naudoti biblatex arba natbib;
-% kol kas pakaks paprastų (Author, Year) nuorodų tekste.
-
 \title{ARMv2 vs. Zilog Z80000:\\
 Kompiuterių architektūrų palyginimas}
 \author{Jokūbas Grigalius}
@@ -24,7 +21,45 @@ Kompiuterių architektūrų palyginimas}
 \maketitle
 
 \section{Įvadas}
-ARMv2 ir Z80000 architektūros, abi ~1986–1987 laikotarpio. 
+
+Kompiuterių architektūrų raida ypač suintensyvėjo XX a. devintajame dešimtmetyje,
+kai rinkoje pradėjo atsirasti vis daugiau 16 ir 32 bitų mikroprocesorių,
+skirtų tiek asmeniniams kompiuteriams, tiek įterptinėms ir pramoninėms sistemoms.
+Šiuo laikotarpiu formavosi skirtingos architektūrinės kryptys, iš kurių dvi
+ryškiausios buvo RISC (Reduced Instruction Set Computer) ir CISC
+(Complex Instruction Set Computer).
+
+Šiame darbe lyginamos dvi to paties laikotarpio, tačiau skirtingų filosofijų
+kompiuterių architektūros: \textbf{ARMv2} ir \textbf{Zilog Z80000}. Abi šios
+architektūros buvo kuriamos XX a. pabaigoje ir atspindi skirtingą požiūrį į
+procesoriaus sudėtingumą, našumą ir pritaikymo sritis. ARMv2 yra ankstyvosios
+RISC architektūros pavyzdys, orientuotas į paprastumą ir energijos taupymą,
+tuo tarpu Z80000 atstovauja sudėtingesnei CISC krypčiai, siekusiai didesnio
+funkcionalumo vienoje instrukcijoje.
+
+\textbf{Šio darbo tikslas} – palyginti ARMv2 ir Z80000 architektūras, išanalizuoti
+jų pagrindines technines savybes, veikimo principus bei pritaikymo galimybes.
+
+\textbf{Darbo uždaviniai:}
+\begin{itemize}
+    \item apžvelgti abiejų architektūrų elementinę bazę ir fizines savybes;
+    \item nustatyti architektūrų tipus, adresavimo principus ir registrų organizavimą;
+    \item palyginti atminties organizavimą, virtualiosios atminties palaikymą,
+    pertraukimų veikimą;
+    \item išanalizuoti komandų sistemas, adresavimo būdus ir duomenų tipus;
+    \item palyginti greitaveiką, spartinančiąją atmintį ir taikymo sritis;
+    \item įvertinti programinės įrangos ir emuliavimo galimybes.
+\end{itemize}
+
+\textbf{Darbo metodai} – techninės dokumentacijos, mokomosios literatūros ir
+internetinių šaltinių analizė bei lyginamoji dviejų architektūrų savybių apžvalga.
+Darbas buvo rengiamas naudojant versijų valdymo sistemą ir \LaTeX{} dokumentų
+rengimo sistemą.
+
+\textbf{Darbo struktūra} sudaryta iš įvado, teminių skyrių, kuriuose nagrinėjami
+konkretūs architektūrų aspektai, bei baigiama išvadomis ir naudotų šaltinių
+sąrašu.
+
 
 \section{Elementinė bazė ir fizinės savybės}
 
